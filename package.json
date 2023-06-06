@@ -3,7 +3,12 @@
 	"version": "0.0.1",
 	"description": "a node template",
 	"main": "src/index.js",
+	"type": "module",
 	"scripts": {
+		"concat-stream": "node src/concat-stream.js < ./greets.txt",
+		"stream": "node src/stream.js ./greets.txt",
+		"core-stream": "node src/core-stream.js < ./greets.txt",
+		"write-stream": "node src/write-stream.js",
 		"test": "jest"
 	},
 	"repository": {
@@ -22,5 +27,11 @@
 		"@babel/preset-env": "^7.22.4",
 		"babel-jest": "^29.5.0",
 		"jest": "^29.5.0"
+	},
+	"dependencies": {
+		"concat-stream": "^2.0.0",
+		"libp2p": "^0.45.4",
+		"readable-stream": "^4.4.0",
+		"through2": "^4.0.2"
 	}
 }
