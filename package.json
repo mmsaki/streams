@@ -17,6 +17,9 @@
 		"echo-stream": "node src/echo-stream.js",
 		"object-stream": "node src/object-stream.js",
 		"child-process": "node src/child-process.js",
+		"http-server": "node src/http-server.js",
+		"http-post": "node src/http-post-client.js",
+		"http-get": "node src/http-get-client.js",
 		"test": "jest"
 	},
 	"repository": {

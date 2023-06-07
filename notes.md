@@ -154,3 +154,34 @@ Normally you can only read and write buffers and strings with streams. However, 
 1. Type any data in the terminal
 
    > This will return a tally of the length of the data (bytes) and the total size of data we have seen so far, `obj= { length: 3, total: 174 }`. We also have an `end` function that runs when read input is stopped with control + c
+
+### core streams in node
+
+1. `fs.createReadStream()`
+1. `fs.createWriteStream()`
+1. `process.stdin`, `process.stderror`
+1. `ps.stdin`, `ps.stdout`,`ps.stderror` e.g in `src/child-process.js`
+1. `net.connect()`, `tls.connect()`
+1. `net.createServer(function (stream) {})`
+1. `tls.createServer(opts, function(stream) {})`
+
+### https core streams
+
+```js
+// req: readable, res: writable
+http.createServer(function (req, res {}))
+
+// req: writable res: readable
+var req = http.request(opts, function (res) {})
+```
+
+1. create a server
+
+   ```zsh
+   pnpm run http-server
+   ```
+
+1. create a client
+   ```zsh
+   pnpm run http-client
+   ```
