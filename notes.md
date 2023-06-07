@@ -204,3 +204,32 @@ We can create streams for creating hashes
    # equal to this
    echo -n input-data | shasum -a 256
    ```
+
+## 8. Zlib core streams
+
+1. `zlib.createGzip(opts)` - transforms stream to compress with gzip
+1. `zlib.createGunzip(opts)` - transform stream to uncompress with gzip
+1. `zlib.createDeflate(optst)` - transform stream to compress with deflate
+1. `zlib.createDeflateRaw(opts)` - transform stream to compress with raw deflate
+1. `zlib.createInflate(opts)` - transform stream to uncompress with deflate
+1. `zlib.createInflateRaw(opts)` - transform stream to uncompress with raw deflate
+1. `zlib.createUnzip(opts)` - transform stream to uncompress gzip and deflate
+
+Create a gzip streams
+
+1. Create gzip file
+
+   ```zsh
+   gzip -<greets.txt > greets.txt.gz
+   ```
+
+   > run `gunzip < greets.txt.gz` to check the contents of the file
+
+1. Create `src/gunzip-stream.js` and run
+
+   ```zsh
+   pnpm run gunzip-stream
+   ```
+
+   > **Note**: This program does the same thing as `gunzip < greets.txt.gz` only difference is we added crypto hashing to our pipeline stream.
+   > The hash should match the result from our original file `shasum -a 512 < greets.txt` also same as `gunzip < greets.txt.gz | shasum -a 512`

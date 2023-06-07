@@ -21,6 +21,7 @@
 		"http-post": "node src/http-post-client.js",
 		"http-get": "node src/http-get-client.js",
 		"hash-stream": "node src/hash-stream.js",
+		"gunzip-stream": "node src/gunzip-stream.js < greets.txt.gz",
 		"test": "jest"
 	},
 	"repository": {
