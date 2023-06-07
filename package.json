@@ -20,6 +20,7 @@
 		"http-server": "node src/http-server.js",
 		"http-post": "node src/http-post-client.js",
 		"http-get": "node src/http-get-client.js",
+		"hash-stream": "node src/hash-stream.js",
 		"test": "jest"
 	},
 	"repository": {

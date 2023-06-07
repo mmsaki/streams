@@ -165,7 +165,7 @@ Normally you can only read and write buffers and strings with streams. However, 
 1. `net.createServer(function (stream) {})`
 1. `tls.createServer(opts, function(stream) {})`
 
-### https core streams
+## 6. https core streams
 
 ```js
 // req: readable, res: writable
@@ -184,4 +184,23 @@ var req = http.request(opts, function (res) {})
 1. create a client
    ```zsh
    pnpm run http-client
+   ```
+
+## 7. crypto core streams
+
+We can create streams for creating hashes
+
+1. create hash-stream in `src/hash-stream.js` and run
+
+   ```zsh
+   pnpm run hash-stream
+   ```
+
+1. Add input into terminal, hit control + d and it will return hashes of the data or
+
+   ```zsh
+   echo -n input-data | node src/hash-stream.js; echo
+
+   # equal to this
+   echo -n input-data | shasum -a 256
    ```
