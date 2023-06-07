@@ -9,6 +9,14 @@
 		"stream": "node src/stream.js ./greets.txt",
 		"core-stream": "node src/core-stream.js < ./greets.txt",
 		"write-stream": "node src/write-stream.js",
+		"read-stream": "node src/read-stream.js ./greets.txt",
+		"duplex-stream": "node src/duplex-stream.js",
+		"proxy-stream": "node src/proxy-stream-echo.js",
+		"vpn-stream": "node src/vpn-stream.js",
+		"vpn-client": "node src/vpn-client.js",
+		"echo-stream": "node src/echo-stream.js",
+		"object-stream": "node src/object-stream.js",
+		"child-process": "node src/child-process.js",
 		"test": "jest"
 	},
 	"repository": {

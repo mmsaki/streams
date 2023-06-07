@@ -84,3 +84,73 @@
 ```zsh
 pnpm run write-stream
 ```
+
+### 2. readable streams
+
+1. `stream.pip(...)`
+1. `stream.once('end', function () {})`
+
+   > you probably won't need to call these very often
+
+1. `stream.read()`
+1. `stream.on('readable', function () {})`
+
+   > **note**: you can let a module or `.pipe()` take care of calling those
+
+1. **paused mode** - default behavior with automatic backpressure
+1. **flowing mode** - data is consumed as soon as chunks are available (no backpressure), you can turn it on by:
+   1. `stream.resume()`
+   1. `stream.on('data', function (buf) {})`
+
+### 3. transform stream
+
+1. ALL readable AND writable method streams are available
+1. `input -> transform -> output`
+
+### 4. duplex stream
+
+eg. echo server `echo-stream.js` with `net.createServer()`
+
+1. Run `pnpm run duplex-stream`
+1. Open another terminal and run `nc localhost 5000`
+1. Type hello in the terminal, it returns hello (echo server)
+1. Run a proxy-server `pnpm run proxy-stream` at 5001
+1. Connect to proxy server `nc localhost 50001`
+
+> let's build a vpn, for a better one you can use libsodium
+
+1. create an echo server in `src/echo-stream.js` and run
+
+   ```zsh
+   pnpm run echo-stream
+   ```
+
+1. create a vpn proxy server `src/vpn-stream.js` and run in a separate terminal
+
+   ```zsh
+   pnpm run vpn-stream
+   ```
+
+1. create a vpn client `src/vpn-client.js` and run in a separate terminal
+
+   ```zsh
+   pnpm run vpn-client
+   ```
+
+   > Inside the client terminal type data, the more data you send - it will return back the decrytped data after the buffer is filed
+
+## 5. Object streams
+
+Normally you can only read and write buffers and strings with streams. However, if you initalize a stream in `objectMode`, you can use any kind of object (except for `null`)
+
+> You can use 'through2' by call the `through.obj to activate object streaming mode
+
+1. Create `src/object-stream.js` and run
+
+   ```zsh
+   pnpm run object-stream
+   ```
+
+1. Type any data in the terminal
+
+   > This will return a tally of the length of the data (bytes) and the total size of data we have seen so far, `obj= { length: 3, total: 174 }`. We also have an `end` function that runs when read input is stopped with control + c
