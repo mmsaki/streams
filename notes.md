@@ -233,3 +233,20 @@ Create a gzip streams
 
    > **Note**: This program does the same thing as `gunzip < greets.txt.gz` only difference is we added crypto hashing to our pipeline stream.
    > The hash should match the result from our original file `shasum -a 512 < greets.txt` also same as `gunzip < greets.txt.gz | shasum -a 512`
+
+## 9. Split2 streams
+
+Split input on newlines - This program counts the number of lines of input, like `wc -l`
+
+1. Create stream in `src/line-stream.js`
+
+   ```zsh
+   pnpm run line-stream
+   ```
+
+   > This return the same as running `wc -l greets.txt`
+
+1. We can also add custom regex by white space to stream words
+   ```zsh
+   pnpm run word-stream
+   ```

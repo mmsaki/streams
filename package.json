@@ -22,6 +22,8 @@
 		"http-get": "node src/http-get-client.js",
 		"hash-stream": "node src/hash-stream.js",
 		"gunzip-stream": "node src/gunzip-stream.js < greets.txt.gz",
+		"line-stream": "node src/line-stream.js < greets.txt",
+		"word-stream": "node src/word-stream.js < greets.txt",
 		"test": "jest"
 	},
 	"repository": {
@@ -45,6 +47,7 @@
 		"concat-stream": "^2.0.0",
 		"libp2p": "^0.45.4",
 		"readable-stream": "^4.4.0",
+		"split2": "^4.2.0",
 		"through2": "^4.0.2"
 	}
 }
