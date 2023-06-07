@@ -1,5 +1,6 @@
 import net from 'net';
 import crypto from 'crypto';
+import pump from 'pump';
 
 const VPN_PORT = 5005;
 const PROXY_PORT = 5000;
@@ -10,11 +11,16 @@ const initVector = crypto.randomBytes(16);
 
 net
 	.createServer(function (stream) {
-		stream
-			.pipe(crypto.createDecipheriv(algorithm, sharedSecret, initVector))
-			.pipe(net.connect(PROXY_PORT, 'localhost'))
-			.pipe(crypto.createCipheriv(algorithm, sharedSecret, initVector))
-			.pipe(stream);
+		pump(
+			stream,
+			crypto.createDecipheriv(algorithm, sharedSecret, initVector),
+			net.connect(PROXY_PORT, 'localhost'),
+			crypto.createCipheriv(algorithm, sharedSecret, initVector),
+			stream,
+			function (err) {
+				console.error(err);
+			}
+		);
 	})
 	.listen(VPN_PORT);
 
