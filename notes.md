@@ -250,3 +250,111 @@ Split input on newlines - This program counts the number of lines of input, like
    ```zsh
    pnpm run word-stream
    ```
+
+## 10. Websocket stream
+
+We can also use streams in the browser
+
+1. Create websocket stream in `src/websocket-stream.js`
+
+1. Create websocker client in `src/websocket-client.js`
+
+1. Add content to the public folder that you will be serving in `public/index.html`
+
+1. Install browserify `pnpm i -g browserify` and run
+
+   ```zsh
+   pnpm run websocket-bundle
+
+   # or
+
+   browserify scr/websocket-client.js > public/bundle.js
+   ```
+
+   > **Note**: You can also use tools like watchify of budo to recompile everytime you modify your file
+
+1. Run the server
+
+   ```zsh
+   pnpm run websocket-server
+   ```
+
+1. Go to `http://localhost:5000`
+
+   > Enter in the text input.
+   > **Note**: If you make a mistake in the `src/websocket-client.js`, you might fix it and need to regenerate a new bundle + clear the browser cache.
+
+1. While websocket server is still running, create a websocket cli tool in `src/websocket-cli.js` and run
+
+   ```zsh
+   pnpm run websocket-cli
+   ```
+
+   > This will give same result as in the browser on stdin
+
+## 11. [`collect-stream`](https://www.npmjs.com/package/collect-stream)
+
+Can be useful for testing
+
+Collect a stream's output into a single buffer - for object stream, collect output into an array of objects
+
+1. create a collect stream in `src/collect-stream.js`
+
+## 12. [`to2`](https://www.npmjs.com/package/to2)
+
+Can replace any through2 with to2 if it's an only readable stream
+
+## 13. [`duplexify`](https://www.npmjs.com/package/duplexify)
+
+If you need to create a directory and write to it after
+
+## 14. [`pump`](https://www.npmjs.com/package/pump)
+
+Allows handling of errors when your stream has many pipes which usually crashes your server if one of them encounter an error e.g in `src/vpn-stream.js`
+
+## 15. [`Pumpify`](https://www.npmjs.com/package/pumpify)
+
+## 16. [`end-of-stream`](https://www.npmjs.com/package/end-of-stream)
+
+## 17. [`rpc-stream`](https://www.npmjs.com/package/rpc-stream)
+
+Call methods defined by a remote endpoint
+
+1. Create rpc stream server in `src/rpc-server.js` and run
+
+   ```zsh
+   pnpm run rpc-server
+   ```
+
+1. Create rpc client in `src/rpc-client.js` and run
+   ```zsh
+   pnpm run rpc-client
+   ```
+
+## 18. [`multiplex`](https://www.npmjs.com/package/multiplex)
+
+1. create multiplex server in `scr/multiplex-server.js` and run
+   ```zsh
+   pnpm run multiplex-server
+   ```
+1. Create a client in `scr/multiplex-client.js` and run
+
+   ```zsh
+   pnpm run multiplex-client
+   ```
+
+## 19. [`webrtc-swarm`](https://www.npmjs.com/package/webrtc-swarm)
+
+other deps: `signal-hub`, `simple-peer`
+
+1. Create a server in `src/p2p-stream.js` and run
+
+   ```zsh
+   pnpm run p2p-stream
+   ```
+
+1. Create client in `src/p2p-client.js` and run
+
+   ```zsh
+   pnpm run p2p-client
+   ```
